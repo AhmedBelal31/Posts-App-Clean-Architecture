@@ -10,6 +10,7 @@ abstract class PostsLocalDataSource {
   Future<Unit> cachePosts(List<PostModel> postModels);
 }
 
+const cachedPosts = 'CACHED_POSTS' ;
 class PostsLocalDataSourceImpl extends PostsLocalDataSource {
   final SharedPreferences sharedPreferences;
 
@@ -21,14 +22,14 @@ class PostsLocalDataSourceImpl extends PostsLocalDataSource {
         .map<Map<String, dynamic>>((postModel) => postModel.toJson())
         .toList();
 
-    sharedPreferences.setString('CACHED_POSTS', json.encode(postModelsToJson));
+    sharedPreferences.setString(cachedPosts, json.encode(postModelsToJson));
 
     return Future.value(unit);
   }
 
   @override
   Future<List<PostModel>> getCachedPosts() {
-    final jsonString = sharedPreferences.getString('CACHED_POSTS');
+    final jsonString = sharedPreferences.getString(cachedPosts);
     if (jsonString != null) {
       List decodeJsonData = json.decode(jsonString);
       List<PostModel> jsonToPostModels = decodeJsonData
