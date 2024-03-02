@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'dart:convert';
+import 'dart:nativewrappers/_internal/vm/lib/convert_patch.dart';
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 import '../constants/api_constants.dart';
@@ -7,13 +9,13 @@ import '../error/exceptions.dart';
 class WebServices {
   var client = http.Client();
 
-  Future<http.Response> getData({required String endPoint}) async {
+  Future<dynamic> getData({required String endPoint}) async {
     final response = await client.get(Uri.parse('$baseUrl$endPoint'));
 
     if (response.statusCode == 200) {
-      return response;
+      return jsonDecode(response.body);
     } else {
-      throw ServerException();
+      throw ServerException(errorMessage: 'There is a Problem With Status Code ${response.statusCode}');
     }
   }
 
@@ -25,7 +27,7 @@ class WebServices {
     if (response.statusCode == 201) {
       return Future.value(unit);
     } else {
-      throw ServerException();
+      throw ServerException(errorMessage: 'There is a Problem With Status Code ${response.statusCode}');
     }
   }
 
@@ -35,7 +37,7 @@ class WebServices {
     if (response.statusCode == 200) {
       return Future.value(unit);
     } else {
-      throw ServerException();
+      throw ServerException(errorMessage: 'There is a Problem With Status Code ${response.statusCode}');
     }
   }
 
@@ -47,7 +49,7 @@ class WebServices {
     if (response.statusCode == 200) {
       return Future.value(unit);
     } else {
-      throw ServerException();
+      throw ServerException(errorMessage: 'There is a Problem With Status Code ${response.statusCode}');
     }
   }
 }

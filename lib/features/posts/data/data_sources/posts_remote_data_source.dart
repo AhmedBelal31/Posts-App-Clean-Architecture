@@ -43,11 +43,12 @@ class PostsRemoteDataSourceImpl extends PostsRemoteDataSource {
 
   @override
   Future<List<PostModel>> getAllPosts() async {
-    final response = await webServices.getData(endPoint: postsEndPoint);
-    final List data = json.decode(response.body) as List;
+    List<dynamic> response = await webServices.getData(endPoint: postsEndPoint);
+    // final List data = json.decode(response.body) as List;
 
-    List<PostModel> allPosts =
-        data.map<PostModel>((postMap) => PostModel.fromJson(postMap)).toList();
+    List<PostModel> allPosts = response
+        .map<PostModel>((postMap) => PostModel.fromJson(postMap))
+        .toList();
     return allPosts;
     // client.close();
   }
