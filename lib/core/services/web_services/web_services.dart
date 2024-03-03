@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:nativewrappers/_internal/vm/lib/convert_patch.dart';
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
-import '../constants/api_constants.dart';
-import '../error/exceptions.dart';
+import '../../constants/api_constants.dart';
+import '../../error/exceptions.dart';
+
 
 class WebServices {
   var client = http.Client();

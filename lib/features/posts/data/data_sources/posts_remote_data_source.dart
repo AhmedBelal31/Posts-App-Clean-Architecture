@@ -1,11 +1,9 @@
-import 'dart:convert';
-
 import 'package:dartz/dartz.dart';
 import 'package:posts_app_clean_architecture/core/constants/api_constants.dart';
-import 'package:posts_app_clean_architecture/core/error/exceptions.dart';
-import 'package:posts_app_clean_architecture/core/web_services/web_services.dart';
 import 'package:posts_app_clean_architecture/features/posts/data/models/post_model.dart';
-import 'package:http/http.dart' as http;
+
+import '../../../../core/services/web_services/web_services.dart';
+
 
 abstract class PostsRemoteDataSource {
   Future<List<PostModel>> getAllPosts();
