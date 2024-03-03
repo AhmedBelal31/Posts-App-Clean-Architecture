@@ -10,7 +10,7 @@ class UpdatePostUseCase extends UseCase<Unit, PostEntity> {
   UpdatePostUseCase({required this.postsRepo});
 
   @override
-  Future<Either<Failure, Unit>> execute([PostEntity? parameter]) async {
+  Future<Either<Failure, Unit>> call([PostEntity? parameter]) async {
     return await postsRepo.updatePost(post: parameter!);
   }
 }

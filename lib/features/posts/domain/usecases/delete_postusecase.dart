@@ -10,7 +10,7 @@ class DeletePostUseCase extends UseCase<Unit, int> {
   DeletePostUseCase({required this.postsRepo});
 
   @override
-  Future<Either<Failure, Unit>> execute([int? parameter]) async {
+  Future<Either<Failure, Unit>> call([int? parameter]) async {
     return await postsRepo.deletePost(postId: parameter!);
   }
 }

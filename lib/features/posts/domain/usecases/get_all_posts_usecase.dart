@@ -10,7 +10,7 @@ class GetAllPostsUseCase extends UseCase<List<PostEntity>, void> {
   GetAllPostsUseCase({required this.postsRepo});
 
   @override
-  Future<Either<Failure, List<PostEntity>>> execute([void parameter]) async {
+  Future<Either<Failure, List<PostEntity>>> call([void parameter]) async {
     return await postsRepo.getAllPosts();
   }
 }
