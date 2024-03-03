@@ -23,7 +23,6 @@ class PostsBloc extends Bloc<PostsEvent, PostsState> {
             emit(
                 PostsFailureState(errorMessage: _mapFailureToMessage(failure)));
           }, (posts) {
-            print(posts);
             emit(PostsSuccessState(posts: posts));
           });
         }
