@@ -29,15 +29,15 @@ class PostsRepoImpl extends PostsRepo {
         final remotePosts = await postsRemoteDataSource.getAllPosts();
         postsLocalDataSource.cachePosts(remotePosts);
         return right(remotePosts);
-      } on ServerException catch (errorMessage) {
-        return Left(ServerFailure(errorMessage: errorMessage.toString()));
+      } on ServerException {
+        return Left(ServerFailure());
       }
     } else {
       try {
         final localPosts = await postsLocalDataSource.getCachedPosts();
         return right(localPosts);
-      } on EmptyCacheException catch (errorMessage) {
-        return Left(EmptyCacheFailure(errorMessage: errorMessage.toString()));
+      } on EmptyCacheException {
+        return Left(EmptyCacheFailure());
       }
     }
   }
@@ -70,11 +70,11 @@ class PostsRepoImpl extends PostsRepo {
       try {
         await deleteOrUpdateOrAddPost();
         return right(unit);
-      } on ServerException catch (errorMessage) {
-        return Left(ServerFailure(errorMessage: errorMessage.toString()));
+      } on ServerException {
+        return Left(ServerFailure());
       }
     } else {
-      return const Left(OfflineFailure(errorMessage: 'No-Internet-Connection'));
+      return Left(OfflineFailure());
     }
   }
 }

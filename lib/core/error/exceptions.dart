@@ -1,8 +1,4 @@
-class ServerException implements Exception {
-  String errorMessage ;
-
-  ServerException({required this.errorMessage});
-}
+class ServerException implements Exception {}
 
 class EmptyCacheException implements Exception {}
 

@@ -15,9 +15,7 @@ class WebServices {
     if (response.statusCode == 200) {
       return jsonDecode(response.body);
     } else {
-      throw ServerException(
-          errorMessage:
-              'There is a Problem With Status Code ${response.statusCode}');
+      throw ServerException();
     }
   }
 
@@ -29,9 +27,7 @@ class WebServices {
     if (response.statusCode == 201) {
       return Future.value(unit);
     } else {
-      throw ServerException(
-          errorMessage:
-              'There is a Problem With Status Code ${response.statusCode}');
+      throw ServerException();
     }
   }
 
@@ -41,9 +37,7 @@ class WebServices {
     if (response.statusCode == 200) {
       return Future.value(unit);
     } else {
-      throw ServerException(
-          errorMessage:
-              'There is a Problem With Status Code ${response.statusCode}');
+      throw ServerException();
     }
   }
 
@@ -55,9 +49,7 @@ class WebServices {
     if (response.statusCode == 200) {
       return Future.value(unit);
     } else {
-      throw ServerException(
-          errorMessage:
-              'There is a Problem With Status Code ${response.statusCode}');
+      throw ServerException();
     }
   }
 }
