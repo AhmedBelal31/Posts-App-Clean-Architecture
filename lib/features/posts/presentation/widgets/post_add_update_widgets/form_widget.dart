@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:posts_app_clean_architecture/features/posts/domain/entities/post_entity.dart';
 import 'package:posts_app_clean_architecture/features/posts/presentation/controller/add_delete_update_post_bloc/add_delete_update_post_bloc.dart';
+import 'package:posts_app_clean_architecture/features/posts/presentation/widgets/post_add_update_widgets/form_button.dart';
 
 import 'custom_text_form_field.dart';
 
@@ -50,24 +51,12 @@ class _FormWidgetState extends State<FormWidget> {
             maxLines: 6,
           ),
           const SizedBox(height: 20),
-          buildFormButton(context),
+          FormButton(
+            onPressed: validateFormThenUpdateOrAddPost,
+            text: widget.isUpdatePost ? 'Update' : 'Add',
+            icon: widget.isUpdatePost ? Icons.edit : Icons.add,
+          ),
         ],
-      ),
-    );
-  }
-
-  Widget buildFormButton(BuildContext context) {
-    return SizedBox(
-      width: MediaQuery.sizeOf(context).width / 3,
-      child: ElevatedButton.icon(
-        style: ElevatedButton.styleFrom(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12.0))),
-        onPressed: validateFormThenUpdateOrAddPost,
-        icon: widget.isUpdatePost
-            ? const Icon(Icons.edit)
-            : const Icon(Icons.add),
-        label: Text(widget.isUpdatePost ? 'Update' : 'Add'),
       ),
     );
   }
