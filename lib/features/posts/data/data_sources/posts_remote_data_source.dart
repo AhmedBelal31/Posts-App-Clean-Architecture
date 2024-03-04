@@ -54,7 +54,6 @@ class PostsRemoteDataSourceImpl extends PostsRemoteDataSource {
   @override
   Future<Unit> addPost({required PostModel post}) async {
     final body = {
-      'id': post.id,
       'title': post.title,
       'body': post.body,
     };

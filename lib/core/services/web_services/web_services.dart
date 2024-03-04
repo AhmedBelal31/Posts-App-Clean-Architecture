@@ -21,8 +21,7 @@ class WebServices {
 
   Future<Unit> postData(
       {required Map<String, dynamic> body, required String endPoint}) async {
-    final response =
-        await client.post(Uri.parse('$baseUrl$endPoint'), body: body);
+    final response = await client.post(Uri.parse('$baseUrl$endPoint'), body: body);
 
     if (response.statusCode == 201) {
       return Future.value(unit);

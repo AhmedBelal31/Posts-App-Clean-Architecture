@@ -4,10 +4,14 @@ const primaryColor = Color(0xff082659);
 const secondaryColor = Color(0xff51eec2);
 
 final appTheme = ThemeData(
-  useMaterial3: true,
+  // useMaterial3: true,
   appBarTheme: const AppBarTheme(
     backgroundColor: primaryColor,
     centerTitle: true,
+    titleTextStyle: TextStyle(color: Colors.white , fontSize:22) ,
+    iconTheme: IconThemeData(
+      color: Colors.white
+    )
   ),
   brightness: Brightness.light,
   primaryColor: primaryColor,

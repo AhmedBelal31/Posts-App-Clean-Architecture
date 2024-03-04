@@ -2,10 +2,12 @@ import 'package:posts_app_clean_architecture/features/posts/domain/entities/post
 
 class PostModel extends PostEntity {
   const PostModel({
-    required super.id,
+    super.id,
     required super.title,
     required super.body,
   });
+
+
 
   factory PostModel.fromJson(Map<String, dynamic> json) {
     return PostModel(
