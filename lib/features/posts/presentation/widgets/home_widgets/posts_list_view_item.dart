@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:posts_app_clean_architecture/features/posts/domain/entities/post_entity.dart';
-import 'package:posts_app_clean_architecture/features/posts/presentation/screens/post_add_update_screen.dart';
+import 'package:posts_app_clean_architecture/features/posts/presentation/screens/post_details_screen.dart';
 
 class PostsListViewItem extends StatelessWidget {
   const PostsListViewItem({super.key, required this.index, required this.post});
@@ -13,8 +13,7 @@ class PostsListViewItem extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => PostAddUpdateScreen(
-            isUpdatePost: true,
+          builder: (context) => PostDetailsScreen(
             post: post,
           ),
         ));
